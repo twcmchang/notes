@@ -159,17 +159,17 @@ python sum.py < data.dat
 
 ### 8. Function and Function Call
 - def 會建立一個函式物件
-  ```
+  ```
   def functionName(argument):
     suite
     return a,b,c
   ```
-  - argument 可有可無。可以有回傳值，預設為 None，可用 return 回傳值
-- python module 只是一個包含 python 程式碼的 .py 檔案
+- argument 可有可無。可以有回傳值，預設為 None，可用 return 回傳值
+- python module 只是一個包含 python 程式碼的 \.py 檔案
   ```
-  import moduleName # ignore extension
+  import moduleName # ignore extension
   moduleName.functionName # usage
-  
+
   import random
   random.randit(1,6)
   ```

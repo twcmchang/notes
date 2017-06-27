@@ -117,6 +117,59 @@
   
   
 ### 6. 算術運算符 +, -, *, /
+- augmented assignment 如: +=, \*=, -=, ...
+  - immutable object (i.e. int) 使用 augmented assignment
+    ```
+      a = 2
+      a += 8  # new an object = 10, and redirect objective reference a to the new object
+              # the original object (value = 2) will be collected as garbage
+    ```
+  - str, list 使用 augmented assigment (operator overloading)
+    ```
+    name = "Jimmy"
+    name + "Chang"  # print "JimmyChang"
+    name += "Chang" # print "Jimmy Chang"
+    # list 使用 augmented assignment 時會將 iterable object 的每個資料項附加到清單中，若用 append 則可將 argment 當作當一資料項附加
+    seed = ["s1","s2"]
+    seed += 5     # error
+    seed += [5]   # seed = ["s1","s2",5]
+    seed += "got" # seed = ["s1","s2",5,"g","o","t"] because "got" is iterable
+    ```
+### 7. Input/Output
+- input\(\) 取得使用者或從檔案導入\(EOF\)的輸入，按下 enter 鍵後完成輸入的動作
+  ```
+  total = 0
+  count = 0
+  while True:
+    try:
+      line = input()
+      if line:
+        number = int(line)
+        total += number
+        count += 1
+    except ValueError as err:
+      print(err)
+      continue
+    except EOFError:
+      break
+  if count:
+    print("count=", count, "total=", total, "mean=", total/count)
+  ```
+python sum.py < data.dat
 
+### 8. Function and Function Call
+- def 會建立一個函式物件
+  ```
+  def functionName(argument):
+    suite
+    return a,b,c
+  ```
+  - argument 可有可無。可以有回傳值，預設為 None，可用 return 回傳值
+- python module 只是一個包含 python 程式碼的 .py 檔案
+  ```
+  import moduleName # ignore extension
+  moduleName.functionName # usage
   
-  
+  import random
+  random.randit(1,6)
+  ```

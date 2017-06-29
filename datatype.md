@@ -18,4 +18,25 @@
   import re
   phone1 = re.compile(r"^((?:[(]\d+[(])?\s*\d+(?:-\d+)?)$")
   ```
-### 2. 
+  另外，若字串太長，可用 () 小括號建立一個字串如：
+  ```
+  s = ("This is the nice way to join two long strings."
+      "together; it relies on string literal concatenation.")
+  ```
+
+### 2. slice
+```
+seq[index]          # get the character at index
+seq[start:end]      # get the sequence of character from index start to index end
+seq[start:end:step] # get the character sequence from index start to index end by interval step
+```
+index 可以用順向 start from 0 也可用反向的 start from -1
+```
+| 0 | 1 | 2 | 3 | 4 | index         |
+| a | p | p | l | e | string        |
+|-5 |-4 |-3 |-2 |-1 | index_reverse |
+
+# another cool example:
+s = 'abcdef'
+s[::-1] # will print 'fedcba' # 提取每個 character, step = -1 從結尾往回!
+```

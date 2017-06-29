@@ -40,3 +40,9 @@ index 可以用順向 start from 0 也可用反向的 start from -1
 s = 'abcdef'
 s[::-1] # will print 'fedcba' # 提取每個 character, step = -1 從結尾往回!
 ```
+
+### 3. operators and methods for str
+- immutable sequence, 所有 immutable object 用的 operators 如: 
+  in (membership), + (連接), += (附加), * (複製), *= 
+
+- str methods 列表

@@ -46,38 +46,38 @@ s[::-1] # will print 'fedcba' # 提取每個 character, step = -1 從結尾往�
   in (隸屬), + (連接), += (附加), * (複製), *= 
 
 - str methods 列表
-  ```
-  s.capitalize()            # 回傳字串 s 第一個字母變大寫
-  s.center(width, char)     # s 被置中於一長度於 width 的字串裡，用 char 填補空白
-  s.ljust(width, char)      # 類似 s.center() 但 s 置左
-  s.rjust(width, char)      # 類似 s.center() 但 s 置右
-  s.count(t, start, end)    # 回傳字串 t 在字串 s[start:end] 中出現的次數
-  s.encode(encoding, err)   # 回傳一個 bytes 物件, 會使用 encoding 指定的編碼方式表示
-  s.endswith(x,start,end)   # 回傳 boolean of 字串 s[start:end] 是否以字串 x 結束
-  s.startswith(x,start,end) # 回傳 boolean of 字串 s[start:end] 是否以字串 x 開始
-  s.expandtabs(size)        # s 的空格(以 8 或 size 的倍數)取代為跳格 \t
-  s.find(t,start,end)       # 回傳 t 在字串 s[start:end] 中最左邊的位置, return -1 if not found
-  s.rfind(t,start,end)      # 回傳 t 在字串 s[start:end] 中最右邊的位置, return -1 if not found
-  s.index(t,start,end)      # 類似 s.find(t,start,end), exception ValueError if not found
-  s.isalnum()               # 回傳 boolean of 字串 s 非空字串且每個 character 皆為文數字
-  s.isalpha()               # 回傳 boolean of 字串 s 非空字串且每個 character 皆為字母
-  s.isdecimal()             # 回傳 boolean of 字串 s 非空字串且每個 character 皆為 Unicode 數字 (以 10 為底)
-  s.isdigit()               # 回傳 boolean of 字串 s 非空字串且每個 character 皆為 ASC II 數字
-  s.isnumeric()             # 回傳 boolean of 字串 s 非空字串且每個 character 皆為數值形式的 Unicode (可以是數字或小數)
-  s.isidentifier()          # 回傳 boolean of 字串 s 非空字串且是一個有效的 identifier
-  s.islower()               # 回傳 boolean of 至少有一個可小寫的字母, 且所有小寫都是小寫了
-  s.isupper()               # 回傳 boolean of 至少有一個可大寫的字母, 且所有大寫都是大寫了
-  s.isprintable()           # 可否印出
-  s.isspace()               # 回傳 boolean of 字串 s 非空字串且所有字都是空白字母
-  s.istitle()               # 回傳 boolean of 字串 s 非空字串且首字母大寫的標題
-  s.join(seq)               # 連接序列 seq 中的每個 item 於字串 s 後方
-  s.lower()                 # 字串 s 轉小寫
-  s.upper()                 # 字串 s 轉大寫
-  s.partition(t)            # 
-  s.replace(t, u, n)        # 字串 s 出現 t 的地方換成 u, 最多取代 n 次
-  s.split(t, n)             # 字串 s 以 t 切割, 最多切割 n 次
-  s.splitlines(f)           # 回傳 list, 以 \n 當作終止符號切割字串 s, if f==True, 保留終止符號
-  s.strip(chars)            # 移除字串 s 前後的空白
-  s.swapcase()              # 大小寫互換
-  s.zfill(w)                # 若字串 s 長度小於 w, 則加入前導的零使長度為 w
- ```
+```
+s.capitalize()            # 回傳字串 s 第一個字母變大寫
+s.center(width, char)     # s 被置中於一長度於 width 的字串裡，用 char 填補空白
+s.ljust(width, char)      # 類似 s.center() 但 s 置左
+s.rjust(width, char)      # 類似 s.center() 但 s 置右
+s.count(t, start, end)    # 回傳字串 t 在字串 s[start:end] 中出現的次數
+s.encode(encoding, err)   # 回傳一個 bytes 物件, 會使用 encoding 指定的編碼方式表示
+s.endswith(x,start,end)   # 回傳 boolean of 字串 s[start:end] 是否以字串 x 結束
+s.startswith(x,start,end) # 回傳 boolean of 字串 s[start:end] 是否以字串 x 開始
+s.expandtabs(size)        # s 的空格(以 8 或 size 的倍數)取代為跳格 \t
+s.find(t,start,end)       # 回傳 t 在字串 s[start:end] 中最左邊的位置, return -1 if not found
+s.rfind(t,start,end)      # 回傳 t 在字串 s[start:end] 中最右邊的位置, return -1 if not found
+s.index(t,start,end)      # 類似 s.find(t,start,end), exception ValueError if not found
+s.isalnum()               # 回傳 boolean of 字串 s 非空字串且每個 character 皆為文數字
+s.isalpha()               # 回傳 boolean of 字串 s 非空字串且每個 character 皆為字母
+s.isdecimal()             # 回傳 boolean of 字串 s 非空字串且每個 character 皆為 Unicode 數字 (以 10 為底)
+s.isdigit()               # 回傳 boolean of 字串 s 非空字串且每個 character 皆為 ASC II 數字
+s.isnumeric()             # 回傳 boolean of 字串 s 非空字串且每個 character 皆為數值形式的 Unicode (可以是數字或小數)
+s.isidentifier()          # 回傳 boolean of 字串 s 非空字串且是一個有效的 identifier
+s.islower()               # 回傳 boolean of 至少有一個可小寫的字母, 且所有小寫都是小寫了
+s.isupper()               # 回傳 boolean of 至少有一個可大寫的字母, 且所有大寫都是大寫了
+s.isprintable()           # 可否印出
+s.isspace()               # 回傳 boolean of 字串 s 非空字串且所有字都是空白字母
+s.istitle()               # 回傳 boolean of 字串 s 非空字串且首字母大寫的標題
+s.join(seq)               # 連接序列 seq 中的每個 item 於字串 s 後方
+s.lower()                 # 字串 s 轉小寫
+s.upper()                 # 字串 s 轉大寫
+s.partition(t)            # 
+s.replace(t, u, n)        # 字串 s 出現 t 的地方換成 u, 最多取代 n 次
+s.split(t, n)             # 字串 s 以 t 切割, 最多切割 n 次
+s.splitlines(f)           # 回傳 list, 以 \n 當作終止符號切割字串 s, if f==True, 保留終止符號
+s.strip(chars)            # 移除字串 s 前後的空白
+s.swapcase()              # 大小寫互換
+s.zfill(w)                # 若字串 s 長度小於 w, 則加入前導的零使長度為 w
+```

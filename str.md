@@ -82,3 +82,43 @@ s.splitlines(f)           # 回傳 list, 以 \n 當作終止符號切割字
 s.swapcase()              # 大小寫互換
 s.zfill(w)                # 若字串 s 長度小於 w, 則加入前導的零使長度為 w
 ```
+
+### 4. Useful methods on str
+```
+"<[unbracketed]>".strip("[](){}<>") # 可以同時移除多個 characters
+```
+#### str.format(arguments)
+1. arguments 會依序放入 {} 的位置
+```
+"This book, named {}, is one of my favorite books {}".format("Compounded-eye Man", ":)")
+```
+2. 可以使用 (key = value) pair
+```
+"This book, named {name}, is one of my favorite books {emoji}".format(name="Compounded-eye Man",emoji=":)")
+```
+3. 可以使用 array + 指定 index
+```
+arr = ["Compounded-eye Man",":)"]
+"This book, named {0[1]}, is one of my favorite books {0[emoji]}".format(arr)
+```
+4. 可以使用 dict + 給定 key
+```
+dict = (name="Compounded-eye Man",emoji=":)")
+"This book, named {0[name]}, is one of my favorite books {0[emoji]}".format(dict)
+```
+5. 可以存取 attribute
+```
+import math, sys
+"math.pi == {0.pi} and sys.maxunicode == {1.maxunicode}".format(math,sys)
+```
+6. 使用 \*\* (mapping unpacking)
+```
+name = "Compounded-eye Man"
+emoji = ":)"
+"This book, named {name}, is one of my favorite books {emoji}".format(**locals())
+```
+另外，只要是 mapping datatype (例如: dict) 就可以使用此方法
+```
+dict = (name="Compounded-eye Man",emoji=":)")
+"This book, named {name}, is one of my favorite books {emoji}".format(**dict)
+```

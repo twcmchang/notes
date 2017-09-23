@@ -1,7 +1,11 @@
+# Pandas
+
 ## Series
-pd.Series(dict) where dict: "key" as index and "value" as value
-pd.Series()
-read_csv(...,squeeze=True): convert DataFrame to Series by squeeze=True
+```
+pd.Series(dict)             : dict "key" as index and "value" as value
+pd.Series(data,index)       : can specify data and index
+read_csv(..., squeeze=True) : convert DataFrame to Series by squeeze=True
+```
 
 ### Attributes of Series
 ```

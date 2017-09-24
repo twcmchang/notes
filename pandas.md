@@ -128,15 +128,16 @@ D['columnName'].isnull()                        # return a Boolean Series that i
 D['columnName'].notnull()                       # the reverse of isnull()
 D['columnName'].between(lower,upper)            # return a Boolean Series indicating whether an element between lower and upper
                                                 # e.g. D['Login Time'].between('8:30AM','12:10PM') # example for DateTime object
+                                                
 D['columnName'].duplicated(subset,keep="last")  # return a Boolean Series indicating whether an element is duplicated
   - keep = "last", start searching from last row
   - subset = [], only consider the subset columns to find duplicates
 
-D.drop_duplicates() # drop_duplicates() can be used on DataFrame not only Series
+D.drop_duplicates()                             # drop_duplicates() can be used on DataFrame not only Series
   - subset = [], 
   - keep = False,
   - inplace = True,
   
- D['columnName'].unique()     # return an array of unique elements
- D['columnName'].nunique(dropna=True)  # return the number of unique elements (
+ D['columnName'].unique()                       # return an array of unique elements
+ D['columnName'].nunique(dropna=True)           # return the number of unique elements (dropna default is True)
 ```

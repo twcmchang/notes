@@ -121,7 +121,7 @@ mask1 = df['Team'] == 'Finance'
 mask2 = df['Team'] == 'Math'
 df[mask1 | mask2]
 ```
-- Get Boolean Series using methods
+- Filter by getting Boolean Series using methods
 ```
 D['columnName'].isin(list)                      # return a Boolean Series that indicates whether an element in list
 D['columnName'].isnull()                        # return a Boolean Series that indicates whether an element is null
@@ -140,4 +140,24 @@ D.drop_duplicates()                             # drop_duplicates() can be used 
   
  D['columnName'].unique()                       # return an array of unique elements
  D['columnName'].nunique(dropna=True)           # return the number of unique elements (dropna default is True)
+```
+- Index
+```
+D.set_index(keys=["columnName"],inplace)        # set keys as index
+D.reset_index(drop=false)                       # drop = True implies dropping current index
+```
+- Retrieve Rows by Index Label
+```
+# using Index Label
+D.loc['index']      # return a Series whose key is composed of columns of D
+D.loc['A':'Z']      # return a DataFrame includes 'Z' (***)
+
+# using Index Location
+D.iloc[2:4]         # return a DataFrame not includes 4
+
+# using .ix method
+D.ix[] works like D.loc[] but D.ix returns "not found error" as all null rows
+D.ix[] works like D.iloc[] and both D.ix and D.iloc return "not found error"
+
+
 ```

@@ -6,14 +6,12 @@ pd.Series(dict)             : dict "key" as index and "value" as value
 pd.Series(data,index)       : can specify data and index
 read_csv(..., squeeze=True) : convert DataFrame to Series by squeeze=True
 ```
-
-### Attributes of Series
+- Attributes of Series
 ```
 S.value
 S.index
 ```
-
-### Math Method in Series
+- Math Method in Series
 ```
 S.count(): number of elements
 S.sum()  : summation of elements (numeric)
@@ -38,9 +36,9 @@ S.map(arg)  : map value of S to index of arg and find the corresponding value in
 D.head(n_row) : the first several rows (default=5)
 D.tail(n_row) : the last several rows (default=5)
 D.index     : attribute
-D.value     : value (return nested array, list of array)
-D.shape     : python tuple (n_row,n_col)
-D.dtypes    : dtype of every column 
+D.value     : value, return nested array, list of array
+D.shape     : return python tuple (n_row,n_col)
+D.dtypes    : return dtype of every column 
 ```
 
 - Special for DataFrame
@@ -101,12 +99,44 @@ D.sort_index(ascending,inplace)
 
 D['rank'] = D.rank()  # return a ranking Series
 ```
-- Filter DataFrame
+- DateTime object in DataFrame
 ```
 # using to_datetime function to convert into DateTime object
 D['Date'] = pd.to_datetime(D['Date'])
 
 # using 'parse_dates' in pd.read_csv()
 D = pd.read_csv('filename.csv', parse_dates = ['Date1','Date2'])
+```
+- Filter by Boolean Series
+```
+# using Bool Series to access the rows whose is True, for example:
+df[df['Team'] == "Finance"]
 
+# using Bool Serier variable
+mask = df['Start Date'] <= '2010-01-01'
+df[mask]
+
+# AND (&) , OR (|)
+mask1 = df['Team'] == 'Finance'
+mask2 = df['Team'] == 'Math'
+df[mask1 | mask2]
+```
+- Get Boolean Series using methods
+```
+D['columnName'].isin(list)                      # return a Boolean Series that indicates whether an element in list
+D['columnName'].isnull()                        # return a Boolean Series that indicates whether an element is null
+D['columnName'].notnull()                       # the reverse of isnull()
+D['columnName'].between(lower,upper)            # return a Boolean Series indicating whether an element between lower and upper
+                                                # e.g. D['Login Time'].between('8:30AM','12:10PM') # example for DateTime object
+D['columnName'].duplicated(subset,keep="last")  # return a Boolean Series indicating whether an element is duplicated
+  - keep = "last", start searching from last row
+  - subset = [], only consider the subset columns to find duplicates
+
+D.drop_duplicates() # drop_duplicates() can be used on DataFrame not only Series
+  - subset = [], 
+  - keep = False,
+  - inplace = True,
+  
+ D['columnName'].unique()     # return an array of unique elements
+ D['columnName'].nunique(dropna=True)  # return the number of unique elements (
 ```

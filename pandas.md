@@ -159,5 +159,22 @@ D.iloc[2:4]         # return a DataFrame not includes 4
 D.ix[] works like D.loc[] but D.ix returns "not found error" as all null rows
 D.ix[] works like D.iloc[] and both D.ix and D.iloc return "not found error"
 
+# Second arguments to loc[], iloc[], ix[]
+D.loc['index', ['columnName',...]]
+D.iloc[rowIndex, [colIndex]]
+D.ix['index',3], D.ix[3,['columnName']] all works
+```
+- Set New Value by ix[] method
+```
+D.ix['index',['C1','C2','C3']] = [V1,V2,V3]
 
+# with another condition
+D.ix[D['column1']=="T1", "column1"] = "New_T1"
+```
+- Rename Index Labels or Columns
+```
+D.rename(columns = {"ori_C1" : "new_C1", ...}, inplace = True)
+D.rename(index = {"ori_I1" : "new_I1", ...}, inplace = True)
+
+D.columns = ["new_C1", "new_C2", ...]
 ```

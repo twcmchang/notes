@@ -101,3 +101,12 @@ D.sort_index(ascending,inplace)
 
 D['rank'] = D.rank()  # return a ranking Series
 ```
+- Filter DataFrame
+```
+# using to_datetime function to convert into DateTime object
+D['Date'] = pd.to_datetime(D['Date'])
+
+# using 'parse_dates' in pd.read_csv()
+D = pd.read_csv('filename.csv', parse_dates = ['Date1','Date2'])
+
+```

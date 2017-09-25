@@ -250,3 +250,52 @@ D[["First Name","Last Name"]] = D["Name"].str.split(",",expand=True)
 D["title"].str.split("split", expand=True, n = 2)
 ```
 ### Multi-index
+```
+D.set_index(["C1","C2"])            #
+D.index                             # would be MultiIndex(levels = [[ c1,...], [c2,...]])
+D.index[0]                          # would get a tuple (C1[0],C2[0])
+
+D.index.get_level_values(0)         # D["C1"], equal to D.index.get_level_values("C1")
+D.index.get_level_values(1)         # D["C2"]
+
+D.index.set_names(["new_C1","new_C2"])    # change Index name, and use inplace=True
+
+D.sort_index(ascending = True)            # all index in ascending order
+D.sort_index(ascending = [True,False])    # first index in acsending order, second indx in descending order
+
+```
+- Extract rows from MultiIndex DataFrame
+```
+D.loc[("C_11")]               # extract the rows whose first index == "C11"
+D.loc[("C_11","C_21"),"V_1"]  # extract the first index == "C11" and second index == "C21" and get "V1"'s value
+```
+### Method
+```
+D.transpose()                     # swap axes
+D.ix["V_1",("C_11","C_21")]
+
+D.swaplevel(i=-2,j=-1)            # swap level i to j , and j to i
+
+D.stack()                         # stack all columns of a DataFrame into a Series by Index
+D.stack().to_frame()              # back to DataFrame => 1 column of value
+
+D.unstack()                       # go to the most inner (the most dense cell) layer to the column axis
+D.unstack(level = 2)              # unstack the level = 2 layer into columns, or by name
+D.unstack(level = [1,0], fill=0)  # unstack multiple levels layer in order to columns
+
+# generate/aggregate a condensed DataFrame from a DataFrame
+D.pivot(index="column_as_index",
+        columns="column_to_be_expanded",
+        values="column_as_value")
+
+# pivot table
+D.pivot_table(values="column_as_value",             # can be a list, MultiIndex
+              index="column_as_index_to_group",     # can be a list, MultiIndex
+              aggfunc='mean')                       # "sum", "mean", "max", "min"     
+
+# pd.melt()
+pd.melt(D,
+        id_vars = "Index",                          # column "Index" as index variable
+        var_name="var_n",                           # new variable name
+        value_name="val_n")                         # new value name
+```

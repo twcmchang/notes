@@ -299,3 +299,44 @@ pd.melt(D,
         var_name="var_n",                           # new variable name
         value_name="val_n")                         # new value name
 ```
+### GroupBy
+```
+GD = D.groupby("C1")        # return a DataFrameGroupBy object
+
+GD.size()                   # size of each group
+GD.first()                  # show the first row in every group as DataFrame
+GD.last()                   # --------- last -------------------------------
+
+GD.groups                   # return a dictionary
+                            # key is the grouping variable
+                            # value is the list of index belonging to this grouping
+
+# Retrieve a group with .get_group()
+GD.get_group("Group1")      # return a DataFrame of the group of grouping variable == "Group1"
+                            # equivalent to D[D["C1"]=="Group1"]
+```
+- Methods on Groupby object
+```
+GD.max()                    # 
+GD.min()                    # 
+GD.sum()                    # under the grouping, aggregate every numerical columns and return a DataFrame
+GD.mean()                   # under the grouping, mean of every numerical columns
+GD["V1"].sum()              # select a specific column in each group and sum up by groups
+                            # so as other methods
+                            
+# Grouping by Multiple Columns
+GD = D.groupby(["C1","C2"]) # like a double indexed DataFrame
+
+# .agg(), a powerful aggregation method on groupby object
+GD.agg(dict)                # input a dict,dict = { "column1" : "mean",
+                            #                       "column2" : "sum"}
+GD.agg(["size","sum"])      # execute multiple operations
+
+# iterate through Groups, example:
+GD = D.groupby("C1")
+df = pd.DataFrame(columns = D.columns)
+for group, data in GD:
+  max_in_group = data.nlargest(1, "V1")     # get the largest n=1 row in column "V1"
+  df = df.append(max_in_group)
+  
+```

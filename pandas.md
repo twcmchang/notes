@@ -40,7 +40,6 @@ D.value     : value, return nested array, list of array
 D.shape     : return python tuple (n_row,n_col)
 D.dtypes    : return dtype of every column 
 ```
-
 - Special for DataFrame
 ```
 D.columns   : Index([column names])
@@ -178,3 +177,76 @@ D.rename(index = {"ori_I1" : "new_I1", ...}, inplace = True)
 
 D.columns = ["new_C1", "new_C2", ...]
 ```
+- Drop Rows or Columnsin DataFrame
+```
+D.drop(["Index1",...], inplace = True)    # remove rows whose index in ["Index1",...]
+D.drop(["C1",...], axis = 'column')       # 
+D.pop("C1")                               # pop out a column, C1, from D and return a Series 
+del D["C1"]                               # delete "C1" column
+```
+- Create Random Sample
+```
+D.sample(n=5, axis=0)          # sample 5 rows of D
+D.sample(frac = .25, axis=0)   # sample 25% of rows in D
+```
+- nsamllest or nlargest
+```
+D.nlargest(n=5, columns="C1")  # sort by "C1" column and select the largest n=5
+D.nsmallest(n=5, columns="C2") # sort by "C2" column and select the smallest n=5
+
+# it is similar to
+D.sort_values("C1").head(5)
+```
+- where
+```
+D.where(condition)             # return a full DataFrame but only the rows met the condition have values and the others are all NaNs
+```
+- query
+```
+D.query("condition")           # return subset of DataFrame contains all rows met the condition
+                               # condition is a string
+```
+- .apply() method on Single Columns
+```
+D["C1"] = D["C1"].apply(function_to_do)  # apply function_to_do on every element of column "C1"
+```
+- .apply() method with Row Values
+```
+D.apply(function_to_do, axis = "columns") # axis = "columns" implies the function_to_do executes over columns,
+                                          # so it iterates over rows
+```
+- .copy method to create exact copy
+```
+D.copy()      # exact copy to anoteher memory space
+```
+
+### Text Data in DataFrame
+```
+## Something Different
+D["C1"].str.lower()
+D["C1"].str.upper()
+D["C1"].str.title()
+D["C1"].str.replace("match","replace")  # replace "match" by "replace"
+D["C1"].str.contains("match")           # return a Boolean Series
+D["C1"].str.startswith("match")         # return a Boolean Series that strings in "C1" start with "match"
+D["C1"].str.endswith("match")           # return a Boolean Series that strings in "C1" end with "match"
+D["C1"].str.lstrip()                    # strip the space at left end
+D["C1"].str.rstrip()                    # strip the space at right end
+D["C1"].str.strip()                     # strip off at both ends
+
+## can revise Index and Columns by string method
+D.index = D.index.str.strip()
+D.columns = D.columns.str.title()
+
+## split strings by " " and get the first element as title
+D["C1"].str.split(" ").str.get(0).str.title()
+
+## str.split("split",expand = True)
+# >> will return a DataFrame not a list
+D[["First Name","Last Name"]] = D["Name"].str.split(",",expand=True)
+
+## str.split(..., expand = True, n = 1)
+# >> n=1 means that max split is set to 1 
+D["title"].str.split("split", expand=True, n = 2)
+```
+### Multi-index

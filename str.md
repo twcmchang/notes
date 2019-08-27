@@ -99,7 +99,7 @@ s.zfill(w)                # 若字串 s 長度小於 w, 則加入前導�
 3. 可以使用 array + 指定 index
 ```
 arr = ["Compounded-eye Man",":)"]
-"This book, named {0[1]}, is one of my favorite books {0[emoji]}".format(arr)
+"This book, named {0[0]}, is one of my favorite books {0[1]}".format(arr)
 ```
 4. 可以使用 dict + 給定 key
 ```
